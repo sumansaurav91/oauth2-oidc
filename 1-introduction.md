@@ -32,3 +32,20 @@
 
 # Why OAuth and OIDC Matter?
 
+1. Complete Solution
+  - OAuth 2.0: Authorization ("what you can do")
+  - OIDC: Authentication ("who you are")
+  - Combined coverage of modern identity needs
+
+2. Real-world Adoption
+  - Used by major platforms (Google, Microsoft, Facebook)
+  - De facto standard for API security
+  - Supported by major identity providers
+
+3. Future-Proof
+  - Active development and improvement
+  - Strong security considerations
+  - Evolving with new requirements
+  - Growing ecosystem
+
+[Next: OAuth 2.0 Fundamentals](./2-fundamentals.md)
