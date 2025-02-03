@@ -123,3 +123,5 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlEwWkdPRFpHUWpORVFqSTBOVEkxTWpVM05E
    * Focuses on "Who are you?"
    * Verifies user identity
    * Typically handled by OIDC
+
+[Next: Grant Types](./3-grant-types.md)
