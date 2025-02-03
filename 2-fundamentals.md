@@ -25,7 +25,7 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlEwWkdPRFpHUWpORVFqSTBOVEkxTWpVM05E
 
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/44ed2e18-d518-4186-8f5a-de54e8c70d78" />
 
-#### Refresh Token:
+### Refresh Token:
 * **Definition**: A refresh token is a token that allows a client to get a new access token when the current access token expires.
   - Longer-lived token (days/months)
   - Used to obtain new access tokens
@@ -39,11 +39,14 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlEwWkdPRFpHUWpORVFqSTBOVEkxTWpVM05E
   - The user revokes their consent
   - The refresh token expires
   - The authentication policy for the resource changes
-* Scope
+
+### Scope:
+* **Definition**:  scope in an access token is a permission that limits what an application can do with a user's data. Scopes are used in OAuth 2.0 to control access to a user's account. 
   - Defines permission boundaries
   - Granular access control
   - Requested by client, approved by user
   - Example: ```scope=read_profile write_posts read_photos```
+
 
 
 
