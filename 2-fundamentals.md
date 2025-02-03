@@ -1,4 +1,5 @@
 # OAuth2.0 Fundamentals
+
 ## Core Concepts and Terminology
 
 ### Access Token 
@@ -48,22 +49,77 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlEwWkdPRFpHUWpORVFqSTBOVEkxTWpVM05E
   - Example: ```scope=read_profile write_posts read_photos```
 
 
+## Main Roles
 
+### Resource Owner:
+* **Definition**:
+   - "Resource Owner" refers to the individual or entity that owns the data or resource being accessed, and is typically the end-user who has the authority to grant or deny access to that resource, usually by providing their credentials to an application requesting access;
+   - essentially, the person who is being authenticated to access a protected resource.
+     
+### Client (Application):
+* Request Access to resource
+* Types:
+  ```
+  // Confidential Client (can keep secrets) - Typically Server side application running on a secure server where client secret can be safely stored
+   client_id: abc123
+   client_secret: xyz789
+   
+   // Public Client (cannot keep secrets) - Application running on User's device like mobile app or SPA
+   client_id: def456
+  ```
 
+  ### Authorization Server:
+  * **Definition**: An authorization server is a server that verifies a user's permissions and issues tokens to client applications. It acts as a central hub for managing access control to protected resources.
+  * Key Endpoints:
+    
+    ```
+      * /authorize    - User consent
+      * /token       - Token issuance
+      * /revoke      - Token revocation
+      * /userinfo    - User information (OIDC)
+      * /.well-known/jwks.json: Provides public keys for token verification
+      * /.well-known/openid-configuration - Discovery endpoint
+    ```
+  * Diagram Explaining Authorization Server Architecture
 
+ ![image](https://github.com/user-attachments/assets/785dbab0-e7e3-418d-aa5a-c8b078d3abd0)
 
+ * Flow Description
+```js
+1. Client -> Auth Server: Request authorization
+   GET /authorize?
+     response_type=code&
+     client_id=abc123&
+     scope=read_profile&
+     redirect_uri=https://app.com/callback
 
+2. User -> Auth Server: Grants consent
 
+3. Auth Server -> Client: Returns auth code
+   302 Redirect to: https://app.com/callback?code=xyz789
 
+4. Client -> Auth Server: Exchanges code for tokens
+   POST /token
+   {
+     grant_type: "authorization_code",
+     code: "xyz789",
+     client_id: "abc123",
+     client_secret: "def456"
+   }
 
+5. Client -> Resource Server: Uses access token
+   GET /api/resource
+   Authorization: Bearer eyJhbGciOiJIUzI11111
+```
+### Resource Server
+* **Definition**: A resource server is a server that hosts protected resources and provides access to them through an API. Resource servers are often used in OAuth 2.0, where they receive and validate access tokens to ensure that the request is authorized.
+* Example:
+  ```js
+     GET /api/user/profile
+     Authorization: Bearer eyJhbGciOiJIUzI11111
+  ```
 
-
-
-
-
-
-
-
-
-
-
+### Authentication
+   * Focuses on "Who are you?"
+   * Verifies user identity
+   * Typically handled by OIDC
